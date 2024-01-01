@@ -1,15 +1,11 @@
 import Link from 'next/link';
 import './globals.css';
+import { Navbar } from '@/components/Navbar';
 
 export const metadata = {
   title: '7hv Blog',
   description: 'My first project',
 };
-
-const pages = [
-  { _id: 'my-projects', slug: 'my-projects', title: 'My Projects' },
-  { _id: 'about', slug: 'about', title: 'About' },
-];
 
 export default async function RootLayout({
   children,
@@ -24,15 +20,7 @@ export default async function RootLayout({
             7hv
           </Link>
           <div className="flex items-center gap-5 text-sm text-gray-600">
-            {pages.map((page) => (
-              <Link
-                key={page._id}
-                href={`/${page.slug}`}
-                className="hover:underline"
-              >
-                {page.title}
-              </Link>
-            ))}
+            <Navbar />
           </div>
         </header>
         <main className="py-20">{children}</main>

@@ -2,11 +2,13 @@
 
 import { usePathname } from 'next/navigation';
 import Link from 'next/link';
-import { GoogleLoginButton } from './GoogleLoginButton';
 import { useEffect, useState } from 'react';
 import { User, getAuth, onAuthStateChanged } from 'firebase/auth';
 import { initializeApp } from 'firebase/app';
+
 import { firebaseConfig } from '@/firebase/firebaseConfig';
+
+import { GoogleLoginButton } from './GoogleLoginButton';
 import { GoogleLogoutButton } from './GoogleLogoutButton';
 const firebase = initializeApp(firebaseConfig);
 

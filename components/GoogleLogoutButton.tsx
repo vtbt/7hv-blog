@@ -1,6 +1,7 @@
-import { firebaseConfig } from '@/firebase/firebaseConfig';
 import { initializeApp } from 'firebase/app';
 import { getAuth, signOut } from 'firebase/auth';
+
+import { firebaseConfig } from '@/firebase/firebaseConfig';
 const firebase = initializeApp(firebaseConfig);
 
 export const GoogleLogoutButton = () => {

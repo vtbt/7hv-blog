@@ -1,12 +1,10 @@
-import {
-  getAuth,
-  GoogleAuthProvider,
-  signInWithPopup,
-  User,
-} from 'firebase/auth';
+import { getAuth, GoogleAuthProvider, signInWithPopup } from 'firebase/auth';
 import { initializeApp } from 'firebase/app';
+
 import { firebaseConfig } from '@/firebase/firebaseConfig';
+
 import { GoogleIcon } from './GoogleIcon';
+
 const firebase = initializeApp(firebaseConfig);
 
 export const GoogleLoginButton: React.FC = () => {

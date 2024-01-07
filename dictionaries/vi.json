@@ -1,0 +1,20 @@
+{
+  "navigation": {
+    "projects": "Dự án",
+    "about": "Giới thiệu"
+  },
+  "page": {
+    "home": {
+      "title": "Xin chào",
+      "description": ""
+    },
+    "about": {
+      "title": "Một chút về mình nè!",
+      "description": "This is the about page"
+    },
+    "projects": {
+      "title": "Dự án",
+      "description": ""
+    }
+  }
+}

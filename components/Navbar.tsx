@@ -7,18 +7,29 @@ import { User, getAuth, onAuthStateChanged } from 'firebase/auth';
 import { initializeApp } from 'firebase/app';
 
 import { firebaseConfig } from '@/firebase/firebaseConfig';
+import { getDictionary } from '@/lib/dictionary';
 
 import { GoogleLoginButton } from './GoogleLoginButton';
 import { GoogleLogoutButton } from './GoogleLogoutButton';
 const firebase = initializeApp(firebaseConfig);
 
-const pages = [
-  { id: 'projects', pathname: '/projects', title: 'Projects' },
-  { id: 'about', pathname: '/about', title: 'About' },
+type Page = {
+  id: keyof Awaited<ReturnType<typeof getDictionary>>['navigation'];
+  pathname: string;
+};
+const pages: Page[] = [
+  { id: 'projects', pathname: '/projects' },
+  { id: 'about', pathname: '/about' },
 ];
 
-export function Navbar() {
+export default function Navbar({
+  dictionary,
+}: {
+  dictionary: Awaited<ReturnType<typeof getDictionary>>['navigation'];
+}) {
   const pathname = usePathname();
+  const currentLocale = pathname.split('/')[1];
+
   const auth = getAuth(firebase);
 
   const [user, setUser] = useState<User | null>(null);
@@ -45,17 +56,19 @@ export function Navbar() {
           <GoogleLoginButton />
         )
       ) : (
-        pages.map((page) => (
-          <Link
-            key={page.id}
-            href={page.pathname}
-            className={`hover:underline ${
-              pathname === page.pathname ? 'underline font-bold' : ''
-            }`}
-          >
-            {page.title}
-          </Link>
-        ))
+        <>
+          {pages.map((page) => (
+            <Link
+              key={page.id}
+              href={`/${currentLocale}/${page.pathname}`}
+              className={`hover:underline ${
+                pathname.includes(page.pathname) ? 'underline font-bold' : ''
+              }`}
+            >
+              {dictionary[page.id]}
+            </Link>
+          ))}
+        </>
       )}
     </nav>
   );

@@ -28,20 +28,18 @@ export default function LanguageSelect() {
   if (pathName.includes('/manage')) return;
 
   return (
-    <div>
-      <select
-        id="languageSelect"
-        name="language"
-        value={selectedLanguage}
-        onChange={handleLanguageChange}
-        className="block w-full p-2 focus:outline-none"
-      >
-        {i18n.locales.map((locale) => (
-          <option key={locale} value={locale}>
-            {Language[locale]}
-          </option>
-        ))}
-      </select>
-    </div>
+    <select
+      id="languageSelect"
+      name="language"
+      value={selectedLanguage}
+      onChange={handleLanguageChange}
+      className="block w-full p-2 focus:outline-none"
+    >
+      {i18n.locales.map((locale) => (
+        <option key={locale} value={locale}>
+          {Language[locale]}
+        </option>
+      ))}
+    </select>
   );
 }

@@ -5,7 +5,6 @@ import { getDictionary } from '@/lib/dictionary';
 
 import LanguageSelect from './LanguageSelect';
 import Navbar from './Navbar';
-import ThemeSelector from './ThemeSelector';
 
 export default async function Header({ lang }: { lang: Locale }) {
   const { navigation } = await getDictionary(lang);
@@ -16,10 +15,7 @@ export default async function Header({ lang }: { lang: Locale }) {
           7hv
         </Link>
         <Navbar dictionary={navigation} />
-        <div className="flex gap-2">
-          <LanguageSelect />
-          <ThemeSelector />
-        </div>
+        <LanguageSelect />
       </nav>
     </header>
   );

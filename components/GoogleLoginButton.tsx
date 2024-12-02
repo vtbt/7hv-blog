@@ -15,6 +15,7 @@ export const GoogleLoginButton: React.FC = () => {
     try {
       const result = await signInWithPopup(auth, provider);
       const user = result.user;
+      console.log('Successfully logged in with Google:', user.displayName);
     } catch (error) {
       console.error(error);
     }

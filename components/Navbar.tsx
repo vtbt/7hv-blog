@@ -13,6 +13,7 @@ import { GoogleLogoutButton } from './GoogleLogoutButton';
 const firebase = initializeApp(firebaseConfig);
 
 const pages = [
+  { id: 'blogs', pathname: '/blogs', title: 'Blogs' },
   { id: 'projects', pathname: '/projects', title: 'Projects' },
   { id: 'about', pathname: '/about', title: 'About' },
 ];

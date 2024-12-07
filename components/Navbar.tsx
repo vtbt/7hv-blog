@@ -51,7 +51,7 @@ export function Navbar() {
             key={page.id}
             href={page.pathname}
             className={`hover:underline ${
-              pathname === page.pathname ? 'underline font-bold' : ''
+              pathname.includes(page.pathname) ? 'underline font-bold' : ''
             }`}
           >
             {page.title}

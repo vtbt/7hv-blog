@@ -1,8 +1,9 @@
 import fs from 'fs';
 import path from 'path';
 
-import { MDXRemote } from 'next-mdx-remote/rsc';
 import matter from 'gray-matter';
+import { YouTubeEmbed } from '@next/third-parties/google';
+import { MDXRemote } from 'next-mdx-remote/rsc';
 
 import MdxLayout from '../layout';
 
@@ -34,11 +35,16 @@ export default function Post({ params }: any) {
 
   return (
     <MdxLayout>
-      <h1>{props.frontMatter.title}</h1>
-      <h5>{props.frontMatter.description}</h5>
-      <h5>{props.frontMatter.date}</h5>
+      <h1 className="text-2xl">{props.frontMatter.title}</h1>
+      <p>{props.frontMatter.date}</p>
 
-      <MDXRemote source={props.content} />
+      {/* @ts-expect-error Server Component */}
+      <MDXRemote
+        source={props.content}
+        components={{
+          YouTubeEmbed,
+        }}
+      />
     </MdxLayout>
   );
 }
